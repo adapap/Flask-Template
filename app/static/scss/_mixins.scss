@@ -1,0 +1,55 @@
+@mixin mobile {
+    @media only screen and (max-width: 640px) {
+        @content;
+    }
+}
+
+@mixin scrollbar($width, $scroll-color, $track-color, $radius: 10px) {
+
+    ::-webkit-scrollbar-button { 
+        display: none;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: darken($scroll-color, 5%);
+        border-radius: $radius;
+
+        &:hover {
+            background-color: darken($scroll-color, 10%);
+        }
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: $track-color;
+    }
+    
+    ::-webkit-scrollbar {
+        width: $width;
+    }
+}
+
+@mixin no-scrollbar {
+
+    &::-webkit-scrollbar {
+        height: 0;
+        width: 0;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        height: 0;
+        width: 0;
+    }
+    
+    &::-webkit-scrollbar-track {
+        height: 0;
+        width: 0;
+    }
+}
+
+@mixin transition($time: 0.2s, $what: all, $how: ease-in-out) {
+    -webkit-transition: $what $time $how;
+    -moz-transition: $what $time $how;
+    -ms-transition: $what $time $how;
+    -o-transition: $what $time $how;
+    transition: $what $time $how;
+}
